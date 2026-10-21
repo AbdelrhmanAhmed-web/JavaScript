@@ -1,4 +1,5 @@
 // 1- creating the header part :
+
 let element_name = document.createElement('h1')
 let element_name_txt = document.createTextNode('Abdelrhman Ahmed ')
 let element_hr_line = document.createElement('hr')
@@ -8,6 +9,7 @@ let element_hr_line = document.createElement('hr')
 document.body.appendChild(element_hr_line)
 
 // 2- creating the input box
+
 let element_input_box_1 = document.createElement('input')
     element_input_box_1.type='text'
     element_input_box_1.placeholder='Enter data here..'
@@ -15,12 +17,14 @@ let element_input_box_1 = document.createElement('input')
 
 // 3- submit button 
 
+
 let element_submit_1 = document.createElement('input')
     element_submit_1.type='submit'
     element_submit_1.value='submit'
     document.body.appendChild(element_submit_1)
 
 // 4- clear button 
+
 
 let element_clear_1 = document.createElement('input')
     element_clear_1.type='reset'
@@ -31,6 +35,7 @@ document.body.appendChild(element_hr_line)
 
 //5- txtbox 
 
+
 let element_txt_box = document.createElement('textarea')
     element_txt_box.type='textarea'
     element_txt_box.readOnly='true'
@@ -40,7 +45,9 @@ let element_txt_box = document.createElement('textarea')
 //functions part : 
 
 
+
 // submition function 
+
 
 
 element_submit_1.addEventListener('click',function(){
@@ -55,6 +62,7 @@ element_submit_1.addEventListener('click',function(){
 
 
 
+
 element_clear_1.addEventListener('click',function(){
     if(element_input_box_1.value=='')
         {alert('Enter valid data')}
@@ -66,6 +74,7 @@ element_clear_1.addEventListener('click',function(){
 )
 
 // Styling : 
+
 
 
 element_name.style.textAlign='center'
