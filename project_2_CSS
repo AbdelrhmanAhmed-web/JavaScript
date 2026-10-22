@@ -1,0 +1,75 @@
+.header{
+    background-color: aqua;
+    text-align: center;
+    
+}
+.My_name{
+    font-size: large ;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.input_submit_field{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    height: 250px;
+    position: sticky ;
+    top: 0;
+    z-index: 1000;
+    overflow:visible;
+}
+.input_header{
+    text-align: center;
+    background-color: blueviolet;
+    
+}
+.input{
+    width: 200px;
+    align-self:center;
+    white-space: pre-wrap ;
+    word-wrap: break-word;
+}
+.submit{
+    height: min-content;
+    align-self: center;
+    cursor: pointer;
+}
+.clear{
+    height: min-content;
+    align-self: center;
+    cursor: pointer;
+}
+
+.input:focus{
+    height: 150px;
+    width: 200px;
+    outline: none;
+    border: 5px green solid;
+}
+
+.output_box{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height:250px ;
+    overflow: scroll;
+}
+.output_header{
+    text-align: center;
+    background-color:blueviolet ;
+    font-style: italic;
+    font-size: larger;
+    font-weight: bolder;
+}
+.data{
+    
+    background-color: aqua;
+
+}
+
+body{
+    overflow: visible;
+    height: 1000px;
+}
