@@ -1,0 +1,31 @@
+// accecing the elements.
+let element_input = document.querySelector('.input')
+let element_submit = document.querySelector('.submit')
+let element_clear = document.querySelector('.clear')
+let element_outputBox =document.querySelector('.output_box')
+
+// function to make the submit button create and update the output box
+element_submit.addEventListener('click',function(){
+    if(element_input.value===''){
+        alert('please enter data first')
+    }
+    
+    else{
+        let element_outputBox_data = document.createElement('p')
+        element_outputBox_data.className ='data'
+        element_outputBox_data.textContent =element_input.value
+        element_outputBox.appendChild(element_outputBox_data)
+        element_input.value=''
+        element_outputBox.scrollTop=element_outputBox.scrollHeight
+
+    }
+})
+
+// clear function to delete all the output.
+element_clear.addEventListener('click',function(){
+    if(element_input.value==='' && element_outputBox.textContent===''){alert('please enter data first')}
+    else{
+        element_input.value=''
+        element_outputBox.textContent=''
+    }
+})
