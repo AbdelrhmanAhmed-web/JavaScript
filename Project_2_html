@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="project_2.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="My_name">Abdelrhman Ahmed</h1>
+    </header>
+    <hr>
+    <h2 class="input_header">INPUT :</h2>
+    <div class="input_submit_field">
+        <input class="input" type="text" placeholder="Enter Data here..">
+        <input class="submit" type="submit" value="submit">
+        <input class="clear" type="reset" value="clear">
+        
+    </div>
+    <hr>
+    <h2 class="output_header">OUTPUT :</h2>
+    <div class="output_box">
+        
+    </div>
+</body>
+<script src="project_2.JS"></script>
+</html>
