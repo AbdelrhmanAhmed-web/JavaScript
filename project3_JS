@@ -1,0 +1,74 @@
+
+// Accessing the html code: 
+
+// 1- Input field:
+let input = document.querySelector('.input')
+let submit = document.querySelector('.submit')
+let clear = document.querySelector('.clear')
+
+// 2- output field:
+let output_container = document.querySelector('.output_container') 
+let output_field = document.querySelector('.output_field')
+
+// ------------------------------------------------------
+let currentBox = null 
+
+submit.addEventListener('click', function(){
+    if (input.value === ''){
+        alert('Please Enter Data first')
+    }
+    
+    else if (currentBox !== null) {
+        currentBox.firstChild.textContent = input.value
+        currentBox = null
+        input.value = '' 
+    }
+    
+    else {
+        let output_box = document.createElement('span') 
+        let recicle_bin = document.createElement('img') 
+        let edit_pen = document.createElement('img') 
+        let icons = document.createElement('span') 
+
+        edit_pen.setAttribute('id', crypto.randomUUID()) 
+
+        edit_pen.className = 'edit_pen' 
+        output_box.className = 'output_box' 
+        recicle_bin.className = 'recicle_bin'
+        icons.className = 'icon_containers'
+
+        output_box.textContent = input.value
+        
+        recicle_bin.src = 'images/recicle_bin.png'
+        edit_pen.src = 'images/pen_icon.png' 
+
+        
+        recicle_bin.addEventListener('click', () => { 
+            output_box.remove() 
+        }) 
+
+        
+        edit_pen.addEventListener('click', () => {
+            input.value = output_box.firstChild.textContent;
+            currentBox = output_box
+        })
+
+        input.value = ''
+
+        icons.appendChild(recicle_bin) 
+        icons.appendChild(edit_pen)
+        output_box.appendChild(icons)
+        output_field.appendChild(output_box)
+    }
+})
+
+clear.addEventListener('click', () => {
+    if (input.value === '' && output_field.textContent === ''){
+        alert('No data, Please enter data first')
+    }
+    else{
+        input.value = ''
+        output_field.textContent = ''
+        currentBox = null;
+    }
+})
