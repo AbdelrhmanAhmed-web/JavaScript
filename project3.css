@@ -1,0 +1,80 @@
+.header{
+    background-color: aqua;
+}
+.my_name{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+    font-style: italic;
+}
+.input_title{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+}
+.input_field{
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    position: sticky;
+    height: 250px;
+    align-items: center;
+    z-index: 10000;
+    top: 0;
+
+}
+.input{
+    cursor: pointer;
+}
+.input:focus{
+    height: 100px;
+}
+.submit{
+    cursor: pointer;
+}
+.clear{
+    cursor: pointer;
+}
+
+.output_title{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+}
+.output_field{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 3px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.output_box{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    gap: 3px;
+    padding: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    
+}
+.recicle_bin{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    justify-self: end;
+}
+body{
+    height: 10000;
+    overflow: visible;
+    background-color: blueviolet;
+}
+.edit_pen{
+    width: 20px;
+    height: 20px;
+}
