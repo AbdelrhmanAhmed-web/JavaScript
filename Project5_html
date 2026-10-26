@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="project5.css">
+</head>
+<body>
+    <header class="header"><h1 class="title">To-Do List</h1></header>
+    <hr>
+    <div class="input_area">
+        <input class="input" type="text" placeholder="Enter your items here.." required>
+        <div class="input_buttons">
+            <button class="add" >add</button>
+            <button class="clear"> clear</button>
+        </div>
+    </div>
+    <hr>
+    <div class="output_area"></div>
+</body>
+<script src="project5.js"></script>
+</html>
