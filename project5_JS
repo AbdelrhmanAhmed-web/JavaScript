@@ -1,0 +1,108 @@
+let input_area = document.querySelector('.input_area')
+let output_area = document.querySelector('.output_area')
+
+let input = document.querySelector('.input')
+let input_buttons = document.querySelector('.input_buttons')
+let add = document.querySelector('.add')
+let clear = document.querySelector('.clear')
+
+let current_txt = null 
+let current_check = null
+
+
+
+
+
+add.addEventListener('click',()=>{
+    if(input.value ===''){
+        alert('Please add Items first..')
+        return;
+    }
+
+    let all_skills = document.getElementsByClassName('output_txt')
+    let cleanNewValue = input.value.replace(/^\d+[-.\s]*/, '').trim(); // ChatGPT
+    for(let skill of all_skills){
+        let cleanExistingText = skill.textContent.replace(/^\d+[-.\s]*/, '').trim(); // ChatGPT
+        if(cleanExistingText.toLocaleLowerCase()===cleanNewValue.toLocaleLowerCase()){
+            alert('The Item is already in the list..');
+            return;
+        }
+        
+    }
+
+    if(current_txt!=null){
+        current_txt.textContent =input.value;
+        current_txt=null;
+        add.textContent='add';
+        input.value='';
+        
+        return;
+    }
+    
+    let output_box = document.createElement('div')
+    let output_txt = document.createElement('span')
+    let output_buttons = document.createElement('div')
+    let output_chick = document.createElement('button')
+    let output_update = document.createElement('button')
+    let output_delete = document.createElement('button')
+
+    output_box.className='output_box'
+    output_txt.className='output_txt'
+    output_buttons.className='output_buttons'
+    output_chick.className='output_chick'
+    output_update.className='output_update'
+    output_delete.className='output_delete'
+
+    output_txt.textContent=input.value
+    output_chick.textContent='✓' //ChatGPT
+    output_update.textContent='🛠️' //ChatGPT
+    output_delete.textContent='🗑️' //ChatGPT
+
+    output_delete.addEventListener('click',()=>{
+        output_box.remove()
+    })
+
+    output_update.addEventListener('click',()=>{
+        add.textContent='update'
+        if(output_txt.classList.contains('check-mark')){
+            alert("You completed the task.")
+            add.textContent='add'
+            return;
+        }
+        input.value=output_txt.textContent
+        current_txt=output_txt
+    })
+    output_chick.addEventListener('click',()=>{
+        output_txt.classList.toggle('check-mark')
+        if(output_txt.classList.contains('check-mark')){
+            output_txt.style.textDecoration = 'line-through'  // google
+            
+        }
+        else{
+            output_txt.style.textDecoration = ''
+        }
+
+    })
+    
+    output_buttons.appendChild(output_chick)
+    output_buttons.appendChild(output_update)
+    output_buttons.appendChild(output_delete)
+
+    output_box.appendChild(output_txt)
+    output_box.appendChild(output_buttons)
+    output_area.appendChild(output_box)
+
+    input.value=''
+
+})
+
+clear.addEventListener('click',()=>{
+    if(output_area.innerHTML==='' ){
+        alert('No Items, please add items first..')
+    }
+    else{
+        output_area.innerHTML=''
+        input.value=''
+    }
+    
+})
