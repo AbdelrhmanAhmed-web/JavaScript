@@ -64,7 +64,7 @@ add.addEventListener('click',()=>{
 
     output_update.addEventListener('click',()=>{
         add.textContent='update'
-        if(document.body.classList.contains('check-mark')){
+        if(output_txt.classList.contains('check-mark')){
             alert("You completed the task.")
             add.textContent='add'
             return;
@@ -73,9 +73,10 @@ add.addEventListener('click',()=>{
         current_txt=output_txt
     })
     output_chick.addEventListener('click',()=>{
-        document.body.classList.toggle('check-mark')
-        if(document.body.classList.contains('check-mark')){
+        output_txt.classList.toggle('check-mark')
+        if(output_txt.classList.contains('check-mark')){
             output_txt.style.textDecoration = 'line-through'  // google
+            
         }
         else{
             output_txt.style.textDecoration = ''
@@ -105,4 +106,3 @@ clear.addEventListener('click',()=>{
     }
     
 })
-
