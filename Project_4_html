@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project 4 CRUD </title>
+    <link rel="stylesheet" href="project4.css">
+</head>
+<body>
+    <header class="header"> <h1 class="my_name"> Abdelrhman Ahmed</h1></header>
+    <button class="theme_toggle">🌙</button>
+    <hr>
+    <div class="input_field">
+        <input class="input" type="text" placeholder="Enter data here.." required>
+        <input class="submit" type="submit" value="submit">
+        <button class="clear">clear</button>
+    </div>
+    <hr>
+        <div class="output_area">
+
+    </div>
+</body>
+<script src="project4.js"></script>
+</html>
