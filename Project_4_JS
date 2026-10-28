@@ -1,0 +1,121 @@
+let input_field = document.querySelector('.input_field')
+let input = document.querySelector('.input')
+let submit = document.querySelector('.submit')
+let clear = document.querySelector('.clear')
+
+
+let output_area = document.querySelector('.output_area')
+
+let current_input = null 
+
+submit.addEventListener('click',()=>{
+    if(input.value ==''){
+        alert('please enter data first..')
+        return;
+    }
+
+    
+    let all_data = document.getElementsByClassName('txt_data')
+
+    for( let data of all_data){
+        if (data.textContent===input.value){
+            alert('the data is already there..')
+            return;
+        }
+        if (current_input!=null && data.textContent===current_input){
+            alert('the data is already thrre..')
+            continue;
+            
+        }
+    }
+
+    if(current_input !=null){
+        current_input.textContent = input.value
+        current_input = null;
+        input.value='';
+        submit.value='submit';
+        return;
+    }
+
+    
+        //declarition
+        let output_field=document.createElement('div')
+        let output_txt = document.createElement('div')
+        let output_icons = document.createElement('div')
+        let txt_data = document.createElement('span')
+        let recicle_bin = document.createElement('img')
+        let update = document.createElement('img')
+        
+
+
+        // setting class
+        output_field.className='output_field'
+        output_txt.className='output_txt'
+        output_icons.className='output_icons'
+        txt_data.className='txt_data'
+        recicle_bin.className='recicle_bin'
+        update.className='update'
+        update.setAttribute('id',crypto.randomUUID())
+
+        //resource
+        txt_data.textContent=input.value
+        recicle_bin.src='images/recicle_bin.png'
+        update.src='images/pen_icon.png'
+
+        
+        //recicle_bin action
+        recicle_bin.addEventListener('click',()=>{output_field.remove()})
+
+        update.addEventListener('click',()=>{   
+            submit.value='update'       
+            input.value=txt_data.textContent
+            current_input=txt_data
+            
+        })
+        
+        if(output_area.lastElementChild!=null){
+            let last_value = output_area.lastElementChild.querySelector('.txt_data').textContent
+
+            if(input.value===last_value){alert('please no duplicate entries..')
+                return;
+            }
+        }
+
+        
+
+        //appending
+        output_txt.appendChild(txt_data)
+
+        output_icons.appendChild(recicle_bin)
+        output_icons.appendChild(update)
+
+        output_field.appendChild(output_txt)
+        output_field.appendChild(output_icons)
+        output_area.appendChild(output_field)
+        input.value=''
+        
+        
+    }
+)
+
+clear.addEventListener('click',()=>{
+    if(output_area.innerHTML==='')
+    {alert('No data')}
+    else{
+        input.value=''
+        output_area.innerHTML=''
+        submit.value='submit'
+        current_input= null
+    }
+})
+
+let theme_toggle = document.querySelector('.theme_toggle')
+theme_toggle.addEventListener('click',()=>{
+    document.body.classList.toggle('dark-mode')
+    if(document.body.classList.contains('dark-mode')){
+        theme_toggle.textContent = '☀️'
+    }
+    else{
+        theme_toggle.textContent='🌙'
+    }
+})
