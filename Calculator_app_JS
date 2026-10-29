@@ -1,0 +1,121 @@
+let output_area = document.querySelector('.output_area')
+let input_area = document.querySelector('.input_area')
+
+let input_numbers=document.querySelector('.input_numbers')
+let one = document.querySelector('.one')
+let two = document.querySelector('.two')
+let three = document.querySelector('.three')
+let four = document.querySelector('.four')
+let five = document.querySelector('.five')
+let six = document.querySelector('.six')
+let seven = document.querySelector('.seven')
+let eight = document.querySelector('.eight')
+let nine = document.querySelector('.nine')
+let input_operations = document.querySelector('.input_operations')
+let input_tail = document.querySelector('.input_tail')
+let zero = document.querySelector('.zero')
+let dout = document.querySelector('.dout')
+let equal = document.querySelector('.equal')
+let num1 = document.querySelector('.num1')
+let num2 = document.querySelector('.num2') 
+let operator = document.querySelector('.operator')
+let enter = document.querySelector('.enter')
+let clear = document.querySelector('.clear')
+let output_box = document.querySelector('.output_box')
+
+let current_num = 0
+
+
+input_numbers.addEventListener('click', (e) => {
+    
+    let clicked = e.target;
+    if (clicked.tagName !== 'BUTTON') return;
+
+    let numberValue = clicked.textContent
+
+    if (current_num==0) {
+        num1.textContent += numberValue;
+    }
+    else if (current_num==1 ) {
+        num2.textContent += numberValue;
+    }
+
+})
+
+enter.addEventListener('click',()=>{
+    current_num=1
+})
+
+
+
+input_operations.addEventListener('click',(e)=>{
+    
+    let cliced_oper = e.target
+    if(cliced_oper.tagName!=='BUTTON') return;
+
+    operator.textContent=cliced_oper.textContent
+})
+
+
+
+equal.addEventListener('click',()=>{
+    if(operator.textContent==='+'){
+        num1.textContent=(`${parseFloat(num1.textContent)+ parseFloat(num2.textContent)}`)
+        num2.textContent=''
+        operator.textContent=''
+    }
+    else if(operator.textContent==='-'){
+        num1.textContent=(`${parseFloat(num1.textContent) - parseFloat(num2.textContent)}`)
+        num2.textContent=''
+        operator.textContent=''
+    }
+    else if(operator.textContent==='*'){
+        num1.textContent=(`${parseFloat(num1.textContent) * parseFloat(num2.textContent)}`)
+        num2.textContent=''
+        operator.textContent=''
+    }
+    else if(operator.textContent==='÷'){
+        num1.textContent=(`${parseFloat(num1.textContent) / parseFloat(num2.textContent)}`)
+        num2.textContent=''
+        operator.textContent=''
+    }
+    
+})
+
+clear.addEventListener('click',()=>{
+    num1.textContent=''
+    num2.textContent=''
+    operator.textContent=''
+    current_num=0
+})
+
+input_tail.addEventListener('click',(e)=>{
+    let clicked_tail = e.target;
+    if (clicked_tail.tagName !== 'BUTTON') return;
+    let num_value = clicked_tail.textContent
+
+    if(current_num==0){
+        if(num_value==='0'){
+            
+            num1.textContent+=0;
+        }
+    }else if(current_num==1){
+        if(num_value==='0'){
+
+            num2.textContent+=0;
+        }
+    }
+
+    if(current_num==0){
+        if(num_value==='.'){
+            
+            parseFloat(num1.textContent+='.');
+        }
+    }else if(current_num==1){
+        if(num_value==='.'){
+
+            parseFloat(num2.textContent+='.');
+        }
+    }
+
+})
