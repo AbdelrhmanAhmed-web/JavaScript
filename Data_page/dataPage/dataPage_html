@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Page</title>
+    <link rel="stylesheet" href="project_dataPage.css">
+</head>
+<body>
+    <header class="welcome"><h2 class="welocme_message">Welcome</h2></header>
+    <hr>
+    
+<div class="content">
+    
+    <button class="users"> Users</button>
+    <button class="products">Products</button>
+</div>
+    
+</body>
+<script src="project_login.js"></script>
+<script src="project_dataPage.js"></script>
+</html>
