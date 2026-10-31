@@ -1,0 +1,148 @@
+let user_info = document.querySelector('.user_info')
+let current_user = window.localStorage.getItem('current_user') 
+
+let user_name = document.createElement('p')
+user_name.textContent = `User Name : ${current_user}`
+user_info.appendChild(user_name)
+
+let user_age = document.createElement('p')
+user_age.textContent=`Age: 24`
+user_info.appendChild(user_age)
+
+let user_city = document.createElement('p')
+user_city.textContent=`City : Riyadh`
+user_info.appendChild(user_city)
+
+let user_country = document.createElement('p')
+user_country.textContent=`Country : EGY`
+user_info.appendChild(user_country)
+
+
+let user_phone = document.createElement('p')
+user_phone.textContent=`phone: 050000000`
+user_info.appendChild(user_phone)
+
+let br_lin = document.createElement('hr')
+user_info.appendChild(br_lin)
+
+
+
+let add_user_button = document.createElement('button')
+add_user_button.textContent='Add User'
+user_info.appendChild(add_user_button)
+
+
+let line = document.createElement('br')
+
+add_user_button.addEventListener('click',()=>{
+    let input_user = document.createElement('input')
+    input_user.placeholder='Add User Name'
+    user_info.appendChild(line)
+    user_info.appendChild(input_user)
+
+    let save_user_name_input = document.createElement('button')
+    save_user_name_input.textContent='save'
+    user_info.appendChild(save_user_name_input)
+
+
+    save_user_name_input.addEventListener('click',()=>{
+        if(input_user.value.trim()===''){
+            alert('please enter valid username')
+            return;
+        }
+        let user_name_value = document.createElement('p')
+            user_name_value.textContent=`User Name: ${input_user.value}`
+        
+        input_user.style.visibility='hidden'
+        save_user_name_input.style.visibility='hidden'
+        
+        user_info.appendChild(line)
+// ----------------------------------------------------
+    let input_user_age = document.createElement('input')
+        input_user_age.placeholder='Enter the age..'
+        user_info.appendChild(input_user_age)
+
+    let save_user_age = document.createElement('button')
+        save_user_age.textContent='save'
+        user_info.appendChild(save_user_age)
+
+    save_user_age.addEventListener('click',()=>{
+        let user_age_value=document.createElement('p')
+        if(isNaN(input_user_age.value) || input_user_age.value.trim() === ''){
+                    alert('please enter valid age')
+                    return;
+                }
+        user_age_value.textContent=`Age : ${input_user_age.value}`
+        
+        input_user_age.style.visibility='hidden'
+        save_user_age.style.visibility='hidden'
+        user_info.appendChild(line)
+// ------------------------------------------
+    
+        let input_user_city= document.createElement('input')
+        input_user_city.placeholder='Enter the city'
+        user_info.appendChild(input_user_city)
+
+        let submit_city = document.createElement('button')
+        submit_city.textContent='save'
+        user_info.appendChild(submit_city)
+
+        submit_city.addEventListener('click',()=>{
+            let city_value = document.createElement('p')
+            city_value.textContent=`City: ${input_user_city.value}`
+            input_user_city.style.visibility='hidden'
+            submit_city.style.visibility='hidden'
+            user_info.appendChild(line)
+//----------------------------------------------------------    
+    let input_country= document.createElement('input')
+    input_country.placeholder='Enter the country'
+    user_info.appendChild(input_country)
+
+    let submit_country = document.createElement('button')
+    submit_country.textContent='save'
+    user_info.appendChild(submit_country)
+
+    submit_country.addEventListener('click',()=>{
+        let country_value = document.createElement('p')
+        country_value.textContent=`Country: ${input_country.value}`
+
+        input_country.style.visibility='hidden'
+        submit_country.style.visibility='hidden'
+    user_info.appendChild(line)
+//-------------------------------------------------
+    let input_phone = document.createElement('input')
+    input_phone.placeholder='Enter the pohne number..'
+    user_info.appendChild(input_phone)
+
+    let submit_phone = document.createElement('button')
+    submit_phone.textContent='save'
+    user_info.appendChild(submit_phone)
+
+    submit_phone.addEventListener('click',()=>{
+        let phone_value = document.createElement('p')
+
+        if(isNaN(input_phone.value) || input_phone.value.trim() === ''){
+                    alert('please enter valid phone number')
+                    return;
+                }
+
+        phone_value.textContent=`Phone number: ${input_phone.value}`
+    
+        input_phone.style.visibility='hidden'
+        submit_phone.style.visibility='hidden'
+        user_info.appendChild(line)
+
+        let br_line1 = document.createElement('hr')
+        user_info.appendChild(user_name_value)
+        user_info.appendChild(user_age_value)
+        user_info.appendChild(city_value)
+        user_info.appendChild(country_value)
+        user_info.appendChild(phone_value)
+        user_info.appendChild(br_line1)
+
+    })
+    })
+    })   
+    })
+    })   
+})
