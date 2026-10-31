@@ -1,0 +1,18 @@
+let welcome = document.querySelector('.welcome')
+let looged_user = window.localStorage.getItem('current_user')
+
+
+if(looged_user){
+    welcome.textContent=`Welcome ${looged_user}`
+}
+
+let users = document.querySelector('.users')
+let products = document.querySelector('.products')
+
+users.addEventListener('click',()=>{
+    window.open('users_page.html')
+})
+
+products.addEventListener('click',()=>{
+    window.open('products_page.html')
+})
