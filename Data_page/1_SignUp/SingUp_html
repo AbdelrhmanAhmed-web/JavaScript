@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User-Product Data</title>
+    <link rel="stylesheet" href="project_signUp.css">
+</head>
+<body>
+    <h2 class="signUp_header">SignUp</h2>
+    <form >
+        <input class="Username_signUp" type="text" placeholder="Enter UserName..">
+        <br>
+        <input class="Username_pass_up" type="password" placeholder="Enter passwoord..">
+    </form>
+    <button class="signUp">SignUp</button>
+</body>
+<script src="project_signUp.js"></script>
+</html>
