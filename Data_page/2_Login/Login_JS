@@ -1,0 +1,29 @@
+let login_username = document.querySelector('.login_username')
+let login_password = document.querySelector('.login_password')
+let check_btn = document.querySelector('.check_btn')
+
+
+check_btn.addEventListener('click',()=>{
+    let login_user_value = login_username.value
+    let login_pass_value = login_password.value
+    if(login_user_value.trim()===''|| login_pass_value.trim()===''){
+        alert('please enter your userName and Password..')
+        return;
+    }
+    let saved_username = window.localStorage.getItem(login_user_value)
+    if(!saved_username || saved_username !== login_pass_value){
+        alert('UserName or Password not corecet,try again..')
+        login_username.value=''
+        login_password.value=''
+    }
+    else{
+        window.localStorage.setItem('current_user', login_user_value)
+        let sucsess_msg = document.createElement('h1')
+        sucsess_msg.textContent='Success,please wait..'
+        sucsess_msg.className='sucsess_msg'
+        document.body.appendChild(sucsess_msg)
+        setTimeout(()=>{
+            location.replace('project_dataPage.html')
+        },3000)
+    }
+})
