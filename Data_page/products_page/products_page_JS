@@ -1,0 +1,132 @@
+let product_info = document.querySelector('.product_info')
+
+
+let product_name = document.createElement('p')
+product_name.textContent = `Product Name : Laptop`
+product_info.appendChild(product_name)
+
+let product_price = document.createElement('p')
+product_price.textContent = `Price: 1200`
+product_info.appendChild(product_price)
+
+let product_stok = document.createElement('p')
+product_stok.textContent = `Quantity : 10`
+product_info.appendChild(product_stok)
+
+
+let product_discription = document.createElement('p')
+product_discription.textContent = `Product discription: color: black, weight: 1kg`
+product_info.appendChild(product_discription)
+
+let br_lin = document.createElement('hr')
+product_info.appendChild(br_lin)
+
+// ----------------------------------------------------------------
+
+let add_product_button = document.createElement('button')
+add_product_button.textContent = 'Add Product'
+product_info.appendChild(add_product_button)
+
+let line = document.createElement('br')
+
+add_product_button.addEventListener('click', () => {
+
+    let input_prod_name = document.createElement('input')
+    input_prod_name.placeholder = 'Add Product Name'
+    product_info.appendChild(line)
+    product_info.appendChild(input_prod_name)
+
+    let save_prod_name = document.createElement('button')
+    save_prod_name.textContent = 'save'
+    product_info.appendChild(save_prod_name)
+
+    save_prod_name.addEventListener('click', () => {
+        if(input_prod_name.value.trim()===''){
+            alert('enter valid name')
+            return;
+        }
+
+        let prod_name_val = document.createElement('p')
+        prod_name_val.textContent = `Product Name: ${input_prod_name.value}`
+    
+        input_prod_name.style.visibility = 'hidden'
+        save_prod_name.style.visibility = 'hidden'
+        product_info.appendChild(line)
+
+// ----------------------------------------------------
+        let input_prod_price = document.createElement('input')
+        input_prod_price.placeholder = 'Enter the price..'
+        product_info.appendChild(input_prod_price)
+
+        let save_prod_price = document.createElement('button')
+        save_prod_price.textContent = 'save'
+        product_info.appendChild(save_prod_price)
+
+        save_prod_price.addEventListener('click', () => {
+            let prod_price_val = document.createElement('p')
+            if(isNaN(input_prod_price.value) || input_prod_price.value.trim() === '') {
+                alert('Please enter a valid price')
+                return;
+            }
+            prod_price_val.textContent = `Price : ${input_prod_price.value} $`
+            
+            input_prod_price.style.visibility = 'hidden'
+            save_prod_price.style.visibility = 'hidden'
+            product_info.appendChild(line)
+            
+// ------------------------------------------
+            let input_prod_stock = document.createElement('input')
+            input_prod_stock.placeholder = 'Enter the quantity'
+            product_info.appendChild(input_prod_stock)
+
+            let save_prod_stock = document.createElement('button')
+            save_prod_stock.textContent = 'save'
+            product_info.appendChild(save_prod_stock)
+
+            save_prod_stock.addEventListener('click', () => {
+                let prod_stock_val = document.createElement('p')
+                if(isNaN(input_prod_stock.value) || input_prod_stock.value.trim() === '') {
+                    alert('Please enter a valid quantity')
+                    return;
+                }
+                prod_stock_val.textContent = `Quantity: ${input_prod_stock.value} left in the stock`
+                
+                input_prod_stock.style.visibility = 'hidden'
+                save_prod_stock.style.visibility = 'hidden'
+                product_info.appendChild(line)
+                
+// ----------------------------------------------------------
+                    
+                    let input_discription = document.createElement('input')
+                    input_discription.placeholder = 'Product discription..'
+                    product_info.appendChild(input_discription)
+
+                    let submit_discrip = document.createElement('button')
+                    submit_discrip.textContent = 'save'
+                    product_info.appendChild(submit_discrip)
+
+                    submit_discrip.addEventListener('click', () => {
+                        let discrip_value = document.createElement('p')
+                        if(input_discription.value.trim() === '') {
+                            alert('Please enter a valid discription')
+                            return;
+                        }
+                        discrip_value.textContent = `Product discription: ${input_discription.value}`
+
+                        input_discription.style.visibility = 'hidden'
+                        submit_discrip.style.visibility = 'hidden'
+                        product_info.appendChild(line)
+
+                        
+                        let br_line1 = document.createElement('hr')
+                        product_info.appendChild(prod_name_val)
+                        product_info.appendChild(prod_price_val)
+                        product_info.appendChild(prod_stock_val)
+                        
+                        product_info.appendChild(discrip_value)
+                        product_info.appendChild(br_line1)
+})
+})
+})
+})
+})
