@@ -1,0 +1,17 @@
+.success_msg {
+    width: fit-content;
+    background-color: rgb(2, 121, 121);    
+    font-style: italic;
+    
+    justify-self: center; 
+    align-self: center;   
+    text-align: center;  
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+}
+.signUp{
+    width: fit-content;
+}
