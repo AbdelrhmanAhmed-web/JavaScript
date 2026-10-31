@@ -1,0 +1,35 @@
+let Username_signUp = document.querySelector('.Username_signUp')
+let Username_pass_up = document.querySelector('.Username_pass_up')
+let signUp = document.querySelector('.signUp')
+
+//window.localStorage.clear()
+
+signUp.addEventListener('click',()=>{
+    let user_name_value = Username_signUp.value
+    let password_value = Username_pass_up.value
+
+    if(user_name_value.trim()==='' || password_value.trim() ===''){
+        alert('please enter your UserName and Password first..')
+        return;
+    }
+    if(window.localStorage.getItem(user_name_value)){
+        alert('UserName already exists..')
+    }
+    else{
+        window.localStorage.setItem(user_name_value, password_value)
+        let success_msg = document.createElement('h1')
+        success_msg.textContent='Success, please wait for redirecting...'
+        success_msg.className='success_msg'
+        document.body.appendChild(success_msg)
+        setTimeout(()=>{
+            location.replace('project_login.html')
+        },2000)
+        
+    }
+}
+)
+
+
+
+
+
