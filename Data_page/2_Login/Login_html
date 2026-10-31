@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIN Page</title>
+    <link rel="stylesheet" href="project_login.css">
+</head>
+<body>
+    <h2 class="login">LogIn</h2>
+    <input type="text" placeholder="enter username" class="login_username">
+    <input type="password" placeholder="enter your password" class="login_password">
+    <button class="check_btn">Login</button>
+</body>
+<script src="project_signUp.js"></script>
+<script src="project_login.js"></script>
+</html>
