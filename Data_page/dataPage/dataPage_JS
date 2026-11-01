@@ -1,18 +1,276 @@
 let welcome = document.querySelector('.welcome')
 let looged_user = window.localStorage.getItem('current_user')
 
-
 if(looged_user){
     welcome.textContent=`Welcome ${looged_user}`
 }
 
+//---------
 let users = document.querySelector('.users')
 let products = document.querySelector('.products')
 
+let back = document.createElement('button')
+    back.className='back'
+    back.textContent='Back'
+
 users.addEventListener('click',()=>{
-    window.open('users_page.html')
+    let br_line = document.createElement('hr')
+    let add_user = document.createElement('button')
+    add_user.className='add_user'
+    add_user.textContent='Add User'
+    document.body.appendChild(add_user)
+    document.body.appendChild(br_line)
+
+    add_user.addEventListener('click',()=>{
+        back.style.display='none'
+    let form_users = document.createElement('form')
+    form_users.className='form_users'
+
+    let field_users = document.createElement('div')
+    field_users.className='field_users'
+
+    let label_name = document.createElement('label')
+    label_name.textContent='Name:'
+    let input_name = document.createElement('input')
+    input_name.id='input_name'
+    field_users.appendChild(label_name)
+    field_users.appendChild(input_name)
+
+    let label_age = document.createElement('label')
+    label_age.textContent='Age:'
+    let input_age = document.createElement('input')
+    input_age.id='input_age'
+    field_users.appendChild(label_age)
+    field_users.appendChild(input_age)
+
+    let label_city = document.createElement('label')
+    label_city.textContent='City:'
+    let input_city = document.createElement('input')
+    input_city.id='input_city'
+    field_users.appendChild(label_city)
+    field_users.appendChild(input_city)
+
+    let label_country=document.createElement('label')
+    label_country.textContent='Country:'
+    let input_country = document.createElement('input')
+    input_country.id='input_country'
+    field_users.appendChild(label_country)
+    field_users.appendChild(input_country)
+
+    let label_phone = document.createElement('label')
+    label_phone.textContent='Phone Number:'
+    let input_phone = document.createElement('input')
+    input_phone.id='input_phone'
+    field_users.appendChild(label_phone)
+    field_users.appendChild(input_phone)
+
+
+    form_users.appendChild(field_users)
+    document.body.appendChild(form_users)
+
+    let submit_users= document.createElement('button')
+    submit_users.className='submit_users'
+    submit_users.textContent='Submit'
+
+    document.body.appendChild(submit_users)
+
+    submit_users.addEventListener('click',()=>{
+        if(input_name.value.trim()==='' || input_age.value.trim()==='' || input_city.value.trim()==='' || input_country.value.trim()==='' || input_phone.value.trim()===''){
+        alert('Compleate the data..')
+        return;
+        }
+
+        if(isNaN( input_age.value) || input_age.value<=0 ){
+            alert('Please enter correct age..s')
+            return;
+        }
+
+        if( isNaN(input_phone.value) || input_phone.value.length!==9){
+            alert('Please enter correct phone format..')
+            return;
+        }
+
+        let users_output_field = document.createElement('div')
+        users_output_field.className='users_output_field'
+
+        let output_user_name = document.createElement('p')
+        output_user_name.className='output_user_name'
+        output_user_name.textContent=`Name: ${input_name.value}`
+
+        let output_user_age = document.createElement('p')
+        output_user_age.className='output_user_age'
+        output_user_age.textContent=`Age: ${input_age.value}`
+
+        let output_user_city = document.createElement('p')
+        output_user_city.className='output_user_city'
+        output_user_city.textContent=`City: ${input_city.value}`
+
+        let output_user_country = document.createElement('p')
+        output_user_country.className='output_user_country'
+        output_user_country.textContent=`Country: ${input_country.value}`
+
+        let output_user_phone = document.createElement('p')
+        output_user_phone.className='output_user_phone'
+        output_user_phone.textContent=`Phone: ${input_phone.value}`
+
+        users_output_field.appendChild(output_user_name)
+        users_output_field.appendChild(output_user_age)
+        users_output_field.appendChild(output_user_city)
+        users_output_field.appendChild(output_user_country)
+        users_output_field.appendChild(output_user_phone)
+
+        field_users.style.display='none'
+        submit_users.style.display='none'
+
+        
+        document.body.appendChild(users_output_field)
+        document.body.appendChild(br_line)
+
+        document.body.appendChild(add_user)
+
+        back.style.display=''
+        document.body.appendChild(back)
+
+        back.addEventListener('click',()=>{
+            back.style.display='none'
+            add_user.style.display='none'
+            br_line.style.display='none'
+            form_users.style.display='none'
+            
+            let last_user =document.querySelectorAll('.users_output_field')
+
+            last_user.forEach((user,index)=>{
+                if(index!==last_user.length -1){
+                    user.style.display='none'
+                }
+})
+            
+})
+            
+})
+            
+})
 })
 
+
 products.addEventListener('click',()=>{
-    window.open('products_page.html')
+    let br_line1 = document.createElement('hr')
+    
+    let add_product = document.createElement('button')
+    add_product.className='add_product'
+    add_product.textContent='Add Product'
+    document.body.appendChild(add_product)
+    document.body.appendChild(br_line1)
+
+    add_product.addEventListener('click',()=>{
+        back.style.display='none'
+        let form_products = document.createElement('form')
+        form_products.className='form_products'
+
+        let field_products = document.createElement('div')
+        field_products.className='field_products'
+
+        let label_pro_name = document.createElement('label')
+        label_pro_name.textContent='Product Name:'
+        let input_pro_name = document.createElement('input')
+        input_pro_name.id='input_pro_name'
+        field_products.appendChild(label_pro_name)
+        field_products.appendChild(input_pro_name)
+
+        let label_pro_price = document.createElement('label')
+        label_pro_price.textContent='Price:'
+        let input_pro_price = document.createElement('input')
+        input_pro_price.id='input_pro_price'
+        field_products.appendChild(label_pro_price)
+        field_products.appendChild(input_pro_price)
+
+        let label_pro_stock = document.createElement('label')
+        label_pro_stock.textContent='Stock:'
+        let input_pro_stock = document.createElement('input')
+        input_pro_stock.id='input_pro_stock'
+        field_products.appendChild(label_pro_stock)
+        field_products.appendChild(input_pro_stock)
+
+        let label_pro_dis = document.createElement('label')
+        label_pro_dis.textContent='Discription:'
+        let input_pro_discription = document.createElement('input')
+        input_pro_discription.id = 'input_pro_discription'
+        field_products.appendChild(label_pro_dis)
+        field_products.appendChild(input_pro_discription)
+
+        form_products.appendChild(field_products)
+        document.body.appendChild(form_products)
+
+        let submit_product = document.createElement('button')
+        submit_product.className='submit_product'
+        submit_product.textContent='Submit'
+        document.body.appendChild(submit_product)
+
+        submit_product.addEventListener('click',()=>{
+            if(input_pro_name.value.trim()==='' || input_pro_price.value.trim()===''|| input_pro_stock.value.trim()===''|| input_pro_discription.value.trim()===''){
+                alert('Complete the data..')
+                return;
+            }
+            if(isNaN(input_pro_price.value.trim())||input_pro_price.value<0){
+                alert('price is not accurate.')
+                return;
+            }
+            if(isNaN(input_pro_stock.value)){
+                alert('Stock amount not accurate..')
+                return;
+            }
+
+            let product_output_field = document.createElement('div')
+                product_output_field.className='product_output_field'
+
+            let pr_name = document.createElement('p')
+                pr_name.className='pr_name'
+                pr_name.textContent=`Product Name: ${input_pro_name.value}`
+                product_output_field.appendChild(pr_name)
+
+            let pr_price = document.createElement('p')
+                pr_price.className='pr_price'
+                pr_price.textContent=`Price: ${input_pro_price.value} $`
+                product_output_field.appendChild(pr_price)
+
+            let pr_stock = document.createElement('p')
+                pr_stock.className='pr_stock'
+                pr_stock.textContent=`In Stock: ${input_pro_stock.value}`
+                product_output_field.appendChild(pr_stock)
+
+            let pr_dis=document.createElement('p')
+                pr_dis.className='pr_dis'
+                pr_dis.textContent=`Product Discription: ${input_pro_discription.value}`
+                product_output_field.appendChild(pr_dis)
+
+            form_products.style.display='none'
+            submit_product.style.display='none'
+            document.body.appendChild(product_output_field)
+            document.body.appendChild(br_line1)
+
+            back.style.display=''
+                
+            document.body.appendChild(back)
+
+            back.addEventListener('click',()=>{
+                back.style.display='none'
+                add_product.style.display='none'
+                form_products.style.display='none'
+
+                let last_product = document.querySelectorAll('.product_output_field')
+                    last_product.forEach((product,index)=>{
+                        if(index!==last_product.length-1){
+                            product.style.display='none'
+                        }
+                    })
+            })
+
+            document.body.appendChild(add_product)
+            
+        })
+
+
+
+    })
+    
 })
