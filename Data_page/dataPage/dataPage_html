@@ -11,13 +11,16 @@
     <hr>
     
 <div class="content">
-    
-    <button class="users"> Users
-        
-    </button>
-    <button class="products">Products
-        
-    </button>
+    <div class="data">
+
+        <button class="users"> Users</button>
+        <button class="products">Products</button>
+
+    </div>
+    <div class="adding">
+        <button class="add_user"> Add Uesr</button>
+        <button class="add_product">Add Product</button>
+    </div>
 </div>
     
 </body>
