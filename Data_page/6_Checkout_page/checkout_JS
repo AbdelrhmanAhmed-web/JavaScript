@@ -1,0 +1,38 @@
+let products = window.localStorage.getItem('Purchesd')
+
+let products_chk ;
+
+if(products){
+    products_chk=JSON.parse(products)
+}
+else{
+    products_chk=[]
+}
+
+let total_amount =0
+
+products_chk.forEach((product) => {
+    let product_card = document.createElement('div')
+    product_card.className='product_card'
+    product_card.innerHTML=`
+        <h3 class='p_name'> Product Name: ${product.name}</h3>
+        <h3 class='p_price'> Product Price: ${product.Price} $</h3>
+    `
+    document.body.appendChild(product_card)
+    let hr = document.createElement('hr')
+    document.body.appendChild(hr)
+    total_amount+= parseFloat(product.Price) || 0 
+});
+
+let total = document.createElement('h2')
+total.className='total_price'
+total.textContent=`Total amount: ${total_amount}$`
+document.body.appendChild(total)
+
+let checkout_btn = document.createElement('button')
+checkout_btn.textContent='Do You want to check out? '
+document.body.appendChild(checkout_btn)
+checkout_btn.addEventListener('click',()=>{
+    alert('Thank you!')
+
+})
