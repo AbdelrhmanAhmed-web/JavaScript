@@ -1,0 +1,79 @@
+let stored_products = window.localStorage.getItem('Saved products')
+
+let products_list ;
+
+if(stored_products){
+    products_list= JSON.parse(stored_products)
+}
+else{
+    products_list=[]
+}
+
+
+let products_buy =[];
+
+let carcount=0;
+let total_price=0;
+let cart=document.querySelector('.cart')
+
+cart.textContent=`🛒 ${carcount} |  ${total_price}$ ` 
+
+products_list.forEach((product) => {
+    let product_card = document.createElement('div')
+    product_card.className='product_card'
+
+    let image_html = '';
+    product.Images.forEach((img)=>{
+        image_html+=`<img class="imgs" src="${img}" alt = "Product Image" >`
+    })
+    product_card.innerHTML=`
+    <div class='p_info'>
+        <h3 class='p_name'>Product Name: ${product.Product_name}</h3>
+        <p class='p_price'>Price: ${product.Price}$</p>
+        <p class='p_discrip'>Discription: ${product.Discription}</p>
+        <button class='buy'>BUY</button>
+    </div>
+    
+    <div class='img_product'>
+    ${image_html}
+    </div>
+
+    `
+
+    document.body.appendChild(product_card)
+    let hr = document.createElement('hr')
+    document.body.appendChild(hr)
+
+    let buy_btn = product_card.querySelector('.buy')
+
+    buy_btn.addEventListener('click',()=>{
+        carcount++
+        total_price+=parseFloat(product.Price)
+        
+        cart_products={
+            name:product.Product_name,
+            Price:product.Price
+        }
+
+        products_buy.push(cart_products)
+        window.localStorage.setItem('Purchesd',JSON.stringify(products_buy))
+
+
+        cart.textContent=`🛒 ${carcount} | ${total_price}$`
+        cart.classList.add('cart-anim')
+
+        setTimeout(() => {
+        cart.classList.remove('cart-anim');
+        }, 400);
+    })
+});
+
+cart.addEventListener('click',()=>{
+    window.open('checkout.html')
+
+})
+
+window.localStorage.removeItem('Purchesd')
+
+
+
