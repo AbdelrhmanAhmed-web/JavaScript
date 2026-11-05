@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Out</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <h1>Check out</h1>
+
+    </header>
+    <hr>
+
+</body>
+<script src="product_page.js"></script>
+<script src="checkout.js"></script>
+</html>
