@@ -1,4 +1,3 @@
-/* إعدادات الخلفية وتوسيط الفورم في نص الشاشة بالضبط */
 body {
     background-color: #1c3d3d;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
