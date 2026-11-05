@@ -1,0 +1,87 @@
+body {
+    background-color: #2d2d2d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+
+h1 {
+    color: #73b3f4;
+    font-size: 35px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.product_card {
+    background-color: rgb(218, 218, 167);
+    width: 60%;
+    margin: 15px auto;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.product_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.p_name {
+    color: #0470dc;
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.p_price {
+    color: #e74c3c;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid #eaeaea;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.total_price {
+    color: #6998c8;
+    font-size: 22px;
+    margin: 35px 0 25px 0;
+    font-weight: bold;
+}
+
+button {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.35);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
+}
+
+button:active {
+    transform: translateY(0);
+}
