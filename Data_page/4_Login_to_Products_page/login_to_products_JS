@@ -1,0 +1,24 @@
+let user_name= document.querySelector('.user_name')
+let password = document.querySelector('.password')
+let submit =document.querySelector('.submit') 
+
+
+submit.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let logged_user = user_name.value.trim()
+    let check_user = window.localStorage.getItem(logged_user)
+
+    let user_pass = password.value.trim()
+
+    if(!check_user){
+        alert('UserName not signed')
+        return;
+    }
+    if(check_user!==user_pass){
+        alert('password not correct,try again..')
+        return;
+    }
+    location.replace('products_page.html')
+    
+
+})
