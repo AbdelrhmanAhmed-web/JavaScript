@@ -114,6 +114,22 @@ add_user.addEventListener('click', () => {
     let field_user = document.createElement('div')
     field_user.className = 'field_user'
 
+    let label_userName = document.createElement('label')
+    label_userName.textContent='User Name: '
+    let input_userName = document.createElement('input')
+    input_userName.type='text'
+    input_userName.id = 'userName'
+    field_user.appendChild(label_userName)
+    field_user.appendChild(input_userName)
+
+    let label_pass = document.createElement('label')
+    label_pass.textContent='Password'
+    let input_pass = document.createElement('input')
+    input_pass.type='password'
+    input_pass.id='password'
+    field_user.appendChild(label_pass)
+    field_user.appendChild(input_pass)
+
     let label_name = document.createElement('label')
     label_name.textContent = 'Name:'
     let input_name = document.createElement('input')
@@ -170,6 +186,9 @@ add_user.addEventListener('click', () => {
     submit_user.addEventListener('click', (e) => {
         e.preventDefault()
 
+        let enterdUsername = input_userName.value.trim()
+        let existingUsername = window.localStorage.getItem(enterdUsername)
+
         if(input_name.value.trim() === '' || input_age.value.trim() === '' || input_city.value.trim() === '' || input_country.value.trim() === '' || input_phone.value.trim() === ''){
             alert('Data not compleated..')
             return
@@ -181,6 +200,14 @@ add_user.addEventListener('click', () => {
         if(isNaN(input_phone.value) || input_phone.value.length != 9){
             alert('phone number is not in a correct format, please try again..')
             return
+        }
+        if(existingUsername){
+            alert('username already taken')
+            return;
+        }
+        if(input_pass.value.trim().length<6){
+            alert('password must be atleast 6')
+            return;
         }
 
         let output_users = document.createElement('div')
@@ -254,6 +281,8 @@ add_user.addEventListener('click', () => {
         output_users.appendChild(country_val)
         output_users.appendChild(phone_val)
         output_users.appendChild(action_div)
+        
+        window.localStorage.setItem(input_userName.value,input_pass.value)
 
         users_arr.push(output_users)
 
@@ -265,6 +294,8 @@ add_user.addEventListener('click', () => {
             back.style.display = 'none'
             br_line.style.display = 'none'
         })
+        input_userName.value=''
+        input_pass.value=''
         input_name.value = ''
         input_age.value = ''
         input_city.value = ''
@@ -283,6 +314,8 @@ users.addEventListener('click', () => {
     })
 })
 
+
+let products_needed=[]
 add_product.addEventListener('click', () => {
     resetScreen()
     back.style.display = ''
@@ -324,6 +357,39 @@ add_product.addEventListener('click', () => {
     input_p_discription.id = 'input_p_discription'
     field_product.appendChild(label_p_discrip)
     field_product.appendChild(input_p_discription)
+
+    let label_p_img = document.createElement('label')
+    label_p_img.textContent='Link og the Image'
+    let input_p_img = document.createElement('input')
+    input_p_img.id='input_p_img'
+    input_p_img.className='input_p_img'
+    field_product.appendChild(label_p_img)
+    field_product.appendChild(input_p_img)
+
+    let plus = document.createElement('button')
+    plus.className='plus'
+    plus.textContent='➕'
+    field_product.appendChild(plus)
+    plus.type='button'
+    
+
+    plus.addEventListener('click',()=>{
+        if(input_p_img.value.trim()===''){
+            alert('enter an image first..')
+            return;
+        }
+
+        let br = document.createElement('br')
+        field_product.appendChild(br)
+
+        let plus_img = document.createElement('input')
+        plus_img.id = 'plus_img'
+        plus_img.className='input_p_img'
+        plus_img.placeholder='link of the image'
+        plus_img.style.display='block'
+        field_product.appendChild(plus_img)
+        
+    })
 
     form_product.appendChild(field_product)
     document.body.appendChild(form_product)
@@ -427,6 +493,26 @@ add_product.addEventListener('click', () => {
         output_products.appendChild(discip_val)
         output_products.appendChild(product_action_div)
 
+
+        let all_imgs = document.querySelectorAll('.input_p_img')
+        let imgs_arr=[];
+        all_imgs.forEach((img)=>{
+            if(img.value.trim()!==''){
+                imgs_arr.push(img.value.trim())
+            }
+        })
+
+        let new_products={
+            Product_name:input_p_name.value,
+            Price:input_p_price.value,
+            Discription: input_p_discription.value,
+            Images: imgs_arr
+
+        }
+
+        products_needed.push(new_products)
+        window.localStorage.setItem('Saved products',JSON.stringify(products_needed))
+
         products_arr.push(output_products)
 
         back.style.display = ''
@@ -440,6 +526,10 @@ add_product.addEventListener('click', () => {
         input_p_price.value = ''
         input_p_stock.value = ''
         input_p_discription.value = ''
+        let all_img_clear_value = document.querySelectorAll('.input_p_img')
+        all_img_clear_value.forEach((img)=>{
+            img.value='';
+        })
     })
 })
 
