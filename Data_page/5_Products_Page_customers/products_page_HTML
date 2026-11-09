@@ -1,122 +1,24 @@
-let stored_products = window.localStorage.getItem('Saved products')
-
-let products_list ;
-
-if(stored_products){
-    products_list= JSON.parse(stored_products)
-}
-else{
-    products_list=[]
-}
-
-let products_buy =[];
-
-let carcount=0;
-let total_price=0;
-let cart=document.querySelector('.cart')
-
-cart.textContent=`🛒 ${carcount} |  ${total_price}$ ` 
-
-
-let input_search = document.querySelector('.input_search')
-let search = document.querySelector('.search')
-let Back = document.querySelector('.back') 
-
-let card_elements=[]
-
-products_list.forEach((product) => {
-    let product_card = document.createElement('div')
-    product_card.className='product_card'
-
-    let image_html = '';
-    product.Images.forEach((img)=>{
-        image_html+=`<img class="imgs" src="${img}" alt = "Product Image" >`
-    })
-    product_card.innerHTML=`
-    <div class='p_info'>
-        <h3 class='p_name'>Product Name: ${product.Product_name}</h3>
-        <p class='p_price'>Price: ${product.Price}$</p>
-        <p class='p_discrip'>Discription: ${product.Discription}</p>
-        <button class='buy'>BUY</button>
-    </div>
-    
-    <div class='img_product'>
-    ${image_html}
-    </div>
-    `
-    document.body.appendChild(product_card)
-    let hr = document.createElement('hr')
-    document.body.appendChild(hr)
-
-    card_elements.push({
-        card:product_card,
-        hr:hr,
-        name:product.Product_name.toLowerCase()
-    })
-
-    let buy_btn = product_card.querySelector('.buy')
-
-    buy_btn.addEventListener('click',()=>{
-        carcount++
-        total_price+=parseFloat(product.Price)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="product_page.css">
+</head>
+<body>
+    <header class="header">
+        <h2 class="website_title">Products Store</h2>
         
-        cart_products={
-            name:product.Product_name,
-            Price:product.Price
-        }
+        <input type="text" placeholder="Search" class="input_search" >
+        <button class="search">🔍</button>
+        <button class="back">🔙</button>
 
-        products_buy.push(cart_products)
-        window.localStorage.setItem('Purchesd',JSON.stringify(products_buy))
-
-
-        cart.textContent=`🛒 ${carcount} | ${total_price}$`
-        cart.classList.add('cart-anim')
-
-        setTimeout(() => {
-        cart.classList.remove('cart-anim');
-        }, 400);
-    })
-
+        <button class="cart" onchange="">🛒</button>
+    </header>
     
-});
+</body>
+<script src="project_dataPage.js"></script>
+<script src="product_page.js"></script>
 
-search.addEventListener('click',()=>{
-    let search_value = input_search.value.trim().toLowerCase();
-    if(search_value === ''){
-        return;
-    }
-    card_elements.forEach((item)=>{
-        if(!item.name.includes(search_value)){
-            item.card.style.display = 'none';
-            item.hr.style.display = 'none';
-
-        }
-        else{
-            item.card.style.display = '';
-            item.hr.style.display = '';
-        }
-    })
-    
-})
-
-Back.addEventListener('click',()=>{
-    input_search.value=''
-
-    card_elements.forEach((item)=>{
-        item.card.style.display = '';
-        item.hr.style.display = '';
-    })    
-    })
-
-
-
-
-cart.addEventListener('click',()=>{
-    window.open('checkout.html')
-
-})
-
-window.localStorage.removeItem('Purchesd')
-
-
-
+</html>
