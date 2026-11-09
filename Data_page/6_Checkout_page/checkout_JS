@@ -1,5 +1,4 @@
 let products = window.localStorage.getItem('Purchesd')
-
 let products_chk ;
 
 if(products){
@@ -7,6 +6,15 @@ if(products){
 }
 else{
     products_chk=[]
+}
+
+let products_stock = window.localStorage.getItem('Saved products') 
+let stock_item;
+if(products_stock){
+    stock_item= JSON.parse(products_stock)
+}
+else{
+    stock_item=[]
 }
 
 let total_amount =0
@@ -32,7 +40,27 @@ document.body.appendChild(total)
 let checkout_btn = document.createElement('button')
 checkout_btn.textContent='Do You want to check out? '
 document.body.appendChild(checkout_btn)
-checkout_btn.addEventListener('click',()=>{
-    alert('Thank you!')
 
+
+checkout_btn.addEventListener('click',()=>{
+    if(products_chk.length===0){
+        alert('the cart is empty..')
+        return;
+    }
+
+    products_chk.forEach((bought_product)=>{
+        let matching_items = stock_item.find(item=>item.Product_name===bought_product.name)
+        if(matching_items){
+            let currentStock = parseInt(matching_items.Stock) || 0
+            if (currentStock > 0) {
+                matching_items.Stock = (currentStock - 1).toString()
+            }   
+        }
+    })
+    window.localStorage.setItem('Saved products', JSON.stringify(stock_item))
+    window.localStorage.removeItem('Purchesd')
+    alert('Thank you for your purchase!')
+
+window.location.reload()
 })
+
