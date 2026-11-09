@@ -9,7 +9,6 @@ else{
     products_list=[]
 }
 
-
 let products_buy =[];
 
 let carcount=0;
@@ -17,6 +16,13 @@ let total_price=0;
 let cart=document.querySelector('.cart')
 
 cart.textContent=`🛒 ${carcount} |  ${total_price}$ ` 
+
+
+let input_search = document.querySelector('.input_search')
+let search = document.querySelector('.search')
+let Back = document.querySelector('.back') 
+
+let card_elements=[]
 
 products_list.forEach((product) => {
     let product_card = document.createElement('div')
@@ -37,12 +43,16 @@ products_list.forEach((product) => {
     <div class='img_product'>
     ${image_html}
     </div>
-
     `
-
     document.body.appendChild(product_card)
     let hr = document.createElement('hr')
     document.body.appendChild(hr)
+
+    card_elements.push({
+        card:product_card,
+        hr:hr,
+        name:product.Product_name.toLowerCase()
+    })
 
     let buy_btn = product_card.querySelector('.buy')
 
@@ -66,7 +76,40 @@ products_list.forEach((product) => {
         cart.classList.remove('cart-anim');
         }, 400);
     })
+
+    
 });
+
+search.addEventListener('click',()=>{
+    let search_value = input_search.value.trim().toLowerCase();
+    if(search_value === ''){
+        return;
+    }
+    card_elements.forEach((item)=>{
+        if(!item.name.includes(search_value)){
+            item.card.style.display = 'none';
+            item.hr.style.display = 'none';
+
+        }
+        else{
+            item.card.style.display = '';
+            item.hr.style.display = '';
+        }
+    })
+    
+})
+
+Back.addEventListener('click',()=>{
+    input_search.value=''
+
+    card_elements.forEach((item)=>{
+        item.card.style.display = '';
+        item.hr.style.display = '';
+    })    
+    })
+
+
+
 
 cart.addEventListener('click',()=>{
     window.open('checkout.html')
