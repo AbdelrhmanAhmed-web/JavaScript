@@ -16,4 +16,5 @@
 </body>
 <script src="product_page.js"></script>
 <script src="checkout.js"></script>
+<script src="project_dataPage.js"></script>
 </html>
