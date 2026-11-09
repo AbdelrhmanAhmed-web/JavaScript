@@ -316,6 +316,89 @@ users.addEventListener('click', () => {
 
 
 let products_needed=[]
+
+let stored_products_data = window.localStorage.getItem('Saved products');
+if (stored_products_data) {
+    products_needed = JSON.parse(stored_products_data);
+    
+    products_needed.forEach(product => {
+        let output_products = document.createElement('div')
+        output_products.className = 'output_products'
+
+        let name_val = document.createElement('p')
+        name_val.className = 'name_val'
+        name_val.textContent = product.Product_name
+
+        let price_val = document.createElement('p')
+        price_val.className = 'price_val'
+        price_val.textContent = `${product.Price} $`
+
+        let stock_val = document.createElement('p')
+        stock_val.className = 'stock_val'
+        stock_val.textContent = product.Stock
+
+        let discip_val = document.createElement('p')
+        discip_val.className = 'discip_val'
+        discip_val.textContent = product.Discription
+
+        let product_action_div = document.createElement('div')
+        product_action_div.className = 'action_buttons'
+
+        let delete_product = document.createElement('button')
+        delete_product.className = 'delete_user'
+        delete_product.textContent = '🗑️'
+
+        let edit_product = document.createElement('button')
+        edit_product.className = 'edit_user'
+        edit_product.textContent = '✏️'
+
+        delete_product.addEventListener('click', () => {
+            document.body.removeChild(output_products)
+            products_arr.splice(products_arr.indexOf(output_products), 1)
+            products_needed = products_needed.filter(p => p.Product_name !== product.Product_name)
+            window.localStorage.setItem('Saved products', JSON.stringify(products_needed))
+        })
+
+        edit_product.addEventListener('click', () => {
+            let product_parts = output_products.querySelectorAll('.name_val, .price_val, .stock_val, .discip_val')
+            if(edit_product.textContent === '✏️'){
+                product_parts.forEach((part) => {
+                    let input_p1 = document.createElement('input')
+                    input_p1.type = 'text'
+                    input_p1.className = part.className
+                    input_p1.value = part.textContent.replace(' $', '')
+                    part.replaceWith(input_p1)
+                })
+                edit_product.textContent = '💾'
+            } else {
+                let product_inputs = output_products.querySelectorAll('input')
+                product_inputs.forEach((input) => {
+                    let p = document.createElement('p')
+                    p.className = input.className
+                    if(input.className === 'price_val'){
+                        p.textContent = `${input.value} $`
+                    } else {
+                        p.textContent = input.value
+                    }
+                    input.replaceWith(p)
+                })
+                edit_product.textContent = '✏️'
+            }
+        })
+
+        product_action_div.appendChild(delete_product)
+        product_action_div.appendChild(edit_product)
+
+        output_products.appendChild(name_val)
+        output_products.appendChild(price_val)
+        output_products.appendChild(stock_val)
+        output_products.appendChild(discip_val)
+        output_products.appendChild(product_action_div)
+
+        products_arr.push(output_products)
+    });
+}
+
 add_product.addEventListener('click', () => {
     resetScreen()
     back.style.display = ''
@@ -359,7 +442,7 @@ add_product.addEventListener('click', () => {
     field_product.appendChild(input_p_discription)
 
     let label_p_img = document.createElement('label')
-    label_p_img.textContent='Link og the Image'
+    label_p_img.textContent='Link of the Image'
     let input_p_img = document.createElement('input')
     input_p_img.id='input_p_img'
     input_p_img.className='input_p_img'
@@ -455,6 +538,8 @@ add_product.addEventListener('click', () => {
         delete_product.addEventListener('click', () => {
             document.body.removeChild(output_products)
             products_arr.splice(products_arr.indexOf(output_products), 1)
+            products_needed = products_needed.filter(p => p.Product_name !== input_p_name.value)
+            window.localStorage.setItem('Saved products',JSON.stringify(products_needed))
         })
 
         edit_product.addEventListener('click', () => {
@@ -505,6 +590,7 @@ add_product.addEventListener('click', () => {
         let new_products={
             Product_name:input_p_name.value,
             Price:input_p_price.value,
+            Stock: input_p_stock.value,
             Discription: input_p_discription.value,
             Images: imgs_arr
 
