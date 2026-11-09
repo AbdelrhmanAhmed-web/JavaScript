@@ -10,8 +10,11 @@
     <header class="header">
         <h2 class="website_title">Products Store</h2>
         
+        <input type="text" placeholder="Search" class="input_search" >
+        <button class="search">🔍</button>
+        <button class="back">🔙</button>
+
         <button class="cart" onchange="">🛒</button>
-        
     </header>
     
 </body>
